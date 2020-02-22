@@ -3,7 +3,7 @@ const net = require('net');
 
 const File = require('./File');
 
-const URL = 'p.dobrica.sh'
+const URL = process.env.URL
 
 class Connection {
     /**
