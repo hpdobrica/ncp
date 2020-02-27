@@ -12,7 +12,15 @@ class Connection {
     constructor(socket) {
         this.id = nanoid().replace(/[^a-z0-9+]+/gi, '');
         this.socket = socket;
-        console.log(this.socket);
+
+        const url = `${URL}/${this.id}`;
+        console.log(url);
+        this.socket.write(url, (err) => {
+            if(err) {
+                console.log(err);
+            }
+        });
+
         this.lastPacketReceivedAt = new Date().getTime();
         this.initLivenessChecker();
         this.file = new File(this.id);
@@ -24,14 +32,7 @@ class Connection {
                 return;
             }
 
-            const url = `${URL}/${this.id}`;
-            console.log(url);
-            this.socket.write(url, (err) => {
-                if(err) {
-                    console.log(err);
-                }
-                this.closeConnection();
-            });
+            this.closeConnection();
                 
         }, 1000);
     }
