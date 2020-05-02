@@ -1,10 +1,7 @@
 NCP is a shorthand for netcat copy. 
 You can use this tool to export any data from command into a temporary web page.
 
-The app is currently hosted on p.dobrica.sh
-
-
-Usage:
+If the app is hosted on p.example.com, it can be used like so:
 ```bash
-ls -lah | nc p.dobrica.sh 1337
+ls -lah | nc p.example.com 1337
 ```
